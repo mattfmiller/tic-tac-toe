@@ -9,13 +9,29 @@ function Space(spaceMark, position) {
   this.position = position;
 }
 
+var board = []
+var currentPlayerMark = "X"
+
+function switchPlayer() {
+  if (currentPlayerMark === "X") {
+    currentPlayerMark = "O";
+    console.log("test");
+  } else {
+    currentPlayerMark = "X";
+  }
+}
+
 function mark(number) {
   return board[number].spaceMark + 1
   console.log(board[number].spaceMark + 1);
+  if (currentPlayerMark === "X") {
+    currentPlayerMark = "O";
+    console.log(test);
+  } else {
+    currentPlayerMark = "X";
+  }
 }
 
-
-var board = []
 
 // var turn = 0;
 
@@ -45,9 +61,10 @@ $(document).ready(function(){
 
   $(".space-btn").click(function() {
     var spaceValue = $(this).val();
+    switchPlayer();
     console.log(spaceValue);
-    mark(spaceValue);
-    $("#" + spaceValue + " .imgX").show();
+    console.log(currentPlayerMark);
+    $("#" + spaceValue + " .img" + currentPlayerMark).show();
     $("#" + spaceValue + " .space-btn").hide();
   });
 });
