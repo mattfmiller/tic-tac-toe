@@ -29,6 +29,7 @@ function checkWin() {
   for (var i = 0; i < 3; i +=1 ) {
     if ((board[i].spaceMark !== 0) && (board[i].spaceMark === board[i+3].spaceMark) && (board[i].spaceMark === board[i+6].spaceMark)) {
       alert(currentPlayerMark + " wins!");
+      location.reload();
     }
   }
   for (var i = 0; i < 9; i +=3 ) {
