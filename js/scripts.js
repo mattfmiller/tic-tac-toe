@@ -51,6 +51,8 @@ $(document).ready(function(){
     board.push(space);
     }
 
+    $("#currentPlayer").text("X");
+
   $("#playerX").submit(function(e){
     var playerX = $("#p1InputName").val();
     $("#playerX").hide();
@@ -67,7 +69,7 @@ $(document).ready(function(){
   });
 
   $(".space-btn").click(function() {
-    // $("#player" + currentPlayerMark + "Col").css("text-decoration", "underline");
+    $("#currentPlayer").text(currentPlayerMark);
     var spaceValue = $(this).val();
     switchPlayer($(this).val());
     mark(spaceValue);
