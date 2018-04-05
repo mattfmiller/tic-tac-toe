@@ -34,12 +34,15 @@ function checkWin() {
   for (var i = 0; i < 9; i +=3 ) {
     if ((board[i].spaceMark !== 0) && (board[i].spaceMark === board[i+1].spaceMark) && (board[i].spaceMark === board[i+2].spaceMark)){
       alert(currentPlayerMark + " wins!");
+      location.reload();
     }
   }
   if ((board[0].spaceMark !== 0) && (board[0].spaceMark === board[4].spaceMark) && (board[0].spaceMark === board[8].spaceMark)) {
       alert(currentPlayerMark + " wins!");
+      location.reload();
   } else if ((board[2].spaceMark !== 0) && (board[2].spaceMark === board[4].spaceMark) && (board[2].spaceMark === board[6].spaceMark)) {
     alert(currentPlayerMark + " wins!");
+    location.reload();
   }
 }
 
