@@ -12,7 +12,7 @@ _This webpage is designed to allow a two users to play <a href="https://www.thes
 
 | Specification | Input | Output |
 | --- | --- | --- |
-| Program creates a board object | Load Page | # Board |
+| Program creates a board | Load Page | # Board |
 | Program will create a player for X | Player:  | Player: X |
 | Program will create a player for O | Player: | Player: X, Player: O |
 | Program displays X in board space | Player X: selects space 1 | X displayed in space 1 |
