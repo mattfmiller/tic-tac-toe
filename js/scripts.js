@@ -9,13 +9,21 @@ function Space(spaceMark, position) {
   this.position = position;
 }
 
+function mark(number) {
+  board[number].spaceMark + 1
+}
+
+
 var board = []
+
+// var turn = 0;
+
 
 
 //frontend logic
 $(document).ready(function(){
 
-  for (var i = 1; i <= 9; i++) { //create spaces
+  for (var i = 0; i <= 9; i++) { //create spaces
     var space = new Space(0, i);
     board.push(space);
     }
@@ -31,5 +39,10 @@ $(document).ready(function(){
     $("#playerO").hide();
     $("#playerOCol").text("Player O: " + playerO);
     e.preventDefault();
+  });
+
+  $(".space-btn").click(function() {
+    var spaceValue = $(this).val();
+    mark(spaceValue);
   });
 });
