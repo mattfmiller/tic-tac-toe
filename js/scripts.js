@@ -10,7 +10,8 @@ function Space(spaceMark, position) {
 }
 
 function mark(number) {
-  board[number].spaceMark + 1
+  return board[number].spaceMark + 1
+  console.log(board[number].spaceMark + 1);
 }
 
 
@@ -27,6 +28,7 @@ $(document).ready(function(){
     var space = new Space(0, i);
     board.push(space);
     }
+    console.log(board);
 
   $("#playerX").submit(function(e){
     var playerX = $("#p1InputName").val();
@@ -43,6 +45,9 @@ $(document).ready(function(){
 
   $(".space-btn").click(function() {
     var spaceValue = $(this).val();
+    console.log(spaceValue);
     mark(spaceValue);
+    $("#" + spaceValue + " .imgX").show();
+    $("#" + spaceValue + " .space-btn").hide();
   });
 });
