@@ -10,32 +10,38 @@ function Space(spaceMark, position) {
 }
 
 var board = []
-var currentPlayerMark = "X"
+var currentPlayerMark = "O"
 
 function switchPlayer() {
-  if (currentPlayerMark === "X") {
-    currentPlayerMark = "O";
-    console.log("test");
-  } else {
+  if (currentPlayerMark === "O") {
     currentPlayerMark = "X";
+  } else {
+    currentPlayerMark = "O";
   }
 }
 
-function mark(number) {
-  return board[number].spaceMark + 1
-  console.log(board[number].spaceMark + 1);
-  if (currentPlayerMark === "X") {
-    currentPlayerMark = "O";
-    console.log(test);
-  } else {
-    currentPlayerMark = "X";
-  }
+function mark(number){
+  board[number].spaceMark = currentPlayerMark;
+  console.log(board[number]);
 }
 
-
-// var turn = 0;
-
-
+function checkWin() {
+  for (var i = 0; i < 3; i +=1 ) {
+    if ((board[i].spaceMark !== 0) && (board[i].spaceMark === board[i+3].spaceMark) && (board[i].spaceMark === board[i+6].spaceMark)) {
+      alert(currentPlayerMark + " wins!");
+    }
+  }
+  for (var i = 0; i < 9; i +=3 ) {
+    if ((board[i].spaceMark !== 0) && (board[i].spaceMark === board[i+1].spaceMark) && (board[i].spaceMark === board[i+2].spaceMark)){
+      alert(currentPlayerMark + " wins!");
+    }
+  }
+  if ((board[0].spaceMark !== 0) && (board[0].spaceMark === board[4].spaceMark) && (board[0].spaceMark === board[8].spaceMark)) {
+      alert(currentPlayerMark + " wins!");
+  } else if ((board[2].spaceMark !== 0) && (board[2].spaceMark === board[4].spaceMark) && (board[2].spaceMark === board[6].spaceMark)) {
+    alert(currentPlayerMark + " wins!");
+  }
+}
 
 //frontend logic
 $(document).ready(function(){
@@ -44,27 +50,29 @@ $(document).ready(function(){
     var space = new Space(0, i);
     board.push(space);
     }
-    console.log(board);
 
   $("#playerX").submit(function(e){
     var playerX = $("#p1InputName").val();
     $("#playerX").hide();
     $("#playerXCol").text("Player X: " + playerX);
+    var player =new Player (playerX, "X")
     e.preventDefault();
   });
   $("#playerO").submit(function(e){
     var playerO = $("#p2InputName").val();
     $("#playerO").hide();
     $("#playerOCol").text("Player O: " + playerO);
+    var player =new Player (playerO, "O")
     e.preventDefault();
   });
 
   $(".space-btn").click(function() {
+    // $("#player" + currentPlayerMark + "Col").css("text-decoration", "underline");
     var spaceValue = $(this).val();
-    switchPlayer();
-    console.log(spaceValue);
-    console.log(currentPlayerMark);
+    switchPlayer($(this).val());
+    mark(spaceValue);
     $("#" + spaceValue + " .img" + currentPlayerMark).show();
     $("#" + spaceValue + " .space-btn").hide();
+    checkWin();
   });
 });
