@@ -20,10 +20,16 @@ $(document).ready(function(){
     board.push(space);
     }
 
-  // $("#playerX").submit(function(e){
-  //   e.preventDefault();
-  // });
-  // $("#playerO").submit(function(e){
-  //   e.preventDefault();
-  // });
+  $("#playerX").submit(function(e){
+    var playerX = $("#p1InputName").val();
+    $("#playerX").hide();
+    $("#playerXCol").text("Player X: " + playerX);
+    e.preventDefault();
+  });
+  $("#playerO").submit(function(e){
+    var playerO = $("#p2InputName").val();
+    $("#playerO").hide();
+    $("#playerOCol").text("Player O: " + playerO);
+    e.preventDefault();
+  });
 });
